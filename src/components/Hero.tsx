@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { PERSONAL, HERO_HEADLINES } from "@/lib/data";
 import NetworkGraph from "./NetworkGraph";
 import TerminalOverlay from "./TerminalOverlay";
+import { event } from "@/utils/analytics";
+
 
 export default function Hero() {
   const [headlineIndex, setHeadlineIndex] = useState(0);
@@ -118,6 +120,13 @@ export default function Hero() {
             >
               <a
                 href="#systems"
+                onClick={() => {
+                  event({
+                    action: "explore_systems_clicked",
+                    category: "engagement",
+                    label: "Hero Explore Systems CTA",
+                  });
+                }}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-white font-medium text-sm hover:bg-accent-light transition-all glow-accent"
               >
                 Explore Systems

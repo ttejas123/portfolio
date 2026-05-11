@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { event } from "@/utils/analytics";
 
 export default function CVFloatingButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +23,16 @@ export default function CVFloatingButton() {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white shadow-lg shadow-accent/20 hover:scale-110 hover:shadow-accent/40 transition-all duration-300"
-        aria-label="View CV"
+        onClick={() => {
+          event({
+            action: "view_cv_preview",
+            category: "engagement",
+            label: "CV Floating Button Clicked",
+          });
+          setIsOpen(true);
+        }}
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-3 px-6 h-14 rounded-full bg-accent text-white shadow-lg shadow-accent/20 hover:scale-105 hover:shadow-accent/40 transition-all duration-300 group"
+        aria-label="View Resume"
       >
         <span className="absolute inset-0 rounded-full animate-ping opacity-20 bg-accent" />
         <svg
@@ -33,7 +41,7 @@ export default function CVFloatingButton() {
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className="w-6 h-6 z-10"
+          className="w-5 h-5 z-10 transition-transform group-hover:rotate-12"
         >
           <path
             strokeLinecap="round"
@@ -41,6 +49,7 @@ export default function CVFloatingButton() {
             d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
           />
         </svg>
+        <span className="text-sm font-bold tracking-wider uppercase z-10">Resume</span>
       </motion.button>
 
       {/* Drawer Overlay */}
@@ -64,15 +73,22 @@ export default function CVFloatingButton() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-full md:w-[45vw] bg-bg-primary border-l border-border shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 bottom-0 z-50 w-full md:w-[50vw] bg-bg-primary border-l border-border shadow-2xl flex flex-col"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 md:p-6 border-b border-border">
-              <h2 className="text-xl font-bold">Curriculum Vitae</h2>
+              <h2 className="text-xl font-bold">Resume Preview</h2>
               <div className="flex items-center gap-3">
                 <a
                   href="/TejasThakare_CV.docx"
                   download
+                  onClick={() => {
+                    event({
+                      action: "download_cv",
+                      category: "engagement",
+                      label: "CV Downloaded",
+                    });
+                  }}
                   className="flex items-center gap-2 py-2 px-4 bg-accent hover:bg-accent-light text-white text-sm rounded-lg font-medium transition-colors"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">

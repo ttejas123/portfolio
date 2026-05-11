@@ -28,7 +28,7 @@ export default function ExperienceTimeline() {
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-accent/20 to-transparent" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-accent via-accent/50 to-transparent" />
 
           {EXPERIENCE.map((exp, i) => {
             const isLeft = i % 2 === 0;
@@ -45,12 +45,19 @@ export default function ExperienceTimeline() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.15 }}
                   className="relative pl-14 md:pl-0 w-full md:w-[calc(50%-2rem)]"
-                  style={isLeft ? { paddingRight: "2rem" } : { paddingLeft: "2rem" }}
                 >
-                <div className={`absolute top-6 w-3 h-3 rounded-full bg-accent border-2 border-bg-primary z-10 left-[1.15rem] ${
+                {/* Connecting Line (Mobile) */}
+                <div className="md:hidden absolute top-[30px] left-[24px] h-px bg-border z-0 w-[32px]" />
+                
+                {/* Connecting Line (Desktop) */}
+                <div className={`hidden md:block absolute top-[30px] h-px bg-border z-0 w-[32px] ${
+                  isLeft ? "-right-[32px]" : "-left-[32px]"
+                }`} />
+
+                <div className={`absolute top-6 w-3 h-3 rounded-full bg-accent border-2 border-bg-primary z-10 left-[18px] ${
                   isLeft
                     ? "md:left-auto md:-right-[38px]"
-                    : "md:left-auto md:-left-[38px]"
+                    : "md:-left-[38px]"
                 }`}>
                   <div className="absolute inset-0 rounded-full bg-accent animate-ping opacity-20" />
                 </div>

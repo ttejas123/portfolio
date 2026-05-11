@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import CVFloatingButton from "@/components/CVFloatingButton";
 
@@ -110,6 +111,22 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-bg-primary text-text-primary antialiased">
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-TB9JCH4Q9Q`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TB9JCH4Q9Q');
+            `,
+          }}
+        />
         {children}
         <CVFloatingButton />
       </body>

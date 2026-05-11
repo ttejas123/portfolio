@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROJECTS } from "@/lib/data";
 import { IconGear } from "./Icons";
+import { event } from "@/utils/analytics";
+
 
 const STATUS_CONFIG = {
   production: { label: "Production", color: "bg-green", textColor: "text-green" },
@@ -80,9 +82,16 @@ export default function SystemsExperiments() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
-                  onClick={() =>
-                    setSelectedProject(isSelected ? null : globalIndex)
-                  }
+                  onClick={() => {
+                    if (!isSelected) {
+                      event({
+                        action: "view_project_details",
+                        category: "engagement",
+                        label: project.title,
+                      });
+                    }
+                    setSelectedProject(isSelected ? null : globalIndex);
+                  }}
                   className={`bg-glass backdrop-blur-[20px] border border-border will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] rounded-xl p-5 cursor-pointer group transition-all duration-300 ${
                     isSelected ? "ring-1 ring-accent/30" : ""
                   }`}

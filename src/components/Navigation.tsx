@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PERSONAL } from "@/lib/data";
+import { event } from "@/utils/analytics";
 
 const NAV_LINKS = [
   { label: "Impact", href: "#impact" },
@@ -76,8 +77,8 @@ export default function Navigation() {
         <div className="section-container flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-              <span className="font-mono text-accent font-bold text-sm">T</span>
+            <div className="w-10 h-10 rounded-xl bg-white/5 border border-border flex items-center justify-center group-hover:border-accent/30 transition-all overflow-hidden shadow-sm group-hover:shadow-accent/10">
+              <img src="/logo.png" alt="Logo" className="w-full h-full object-cover p-1.5 group-hover:scale-110 transition-transform duration-500 dark:invert dark:hue-rotate-180" />
             </div>
             <span className="font-semibold text-text-primary hidden sm:block">
               {PERSONAL.name}
@@ -133,6 +134,13 @@ export default function Navigation() {
             {/* Contact CTA */}
             <a
               href={`mailto:${PERSONAL.email}`}
+              onClick={() => {
+                event({
+                  action: "contact_email_clicked",
+                  category: "engagement",
+                  label: "Navigation Email Clicked",
+                });
+              }}
               className="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-all"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse-glow" />
