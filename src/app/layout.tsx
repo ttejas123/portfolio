@@ -4,35 +4,38 @@ import "./globals.css";
 import CVFloatingButton from "@/components/CVFloatingButton";
 
 export const metadata: Metadata = {
-  title: "Tejas Thakare — Systems Engineer | Backend Architecture & Distributed Systems",
+  title: "Tejas Thakare | Systems Engineer & Backend Architect",
   description:
-    "Backend-heavy full stack engineer building scalable microservices, real-time analytics pipelines, and distributed systems. Node.js, PostgreSQL, Redis, RabbitMQ, AWS.",
+    "Engineering high-performance distributed systems, real-time analytics pipelines, and scalable backend architectures. Specialist in Node.js, PostgreSQL, and Cloud Infrastructure.",
   keywords: [
     "Tejas Thakare",
-    "Backend Engineer",
-    "Full Stack Developer",
-    "Systems Architecture",
+    "Systems Engineer",
+    "Backend Architect",
+    "Distributed Systems",
+    "Mumbai",
     "Node.js",
     "PostgreSQL",
-    "Redis",
-    "RabbitMQ",
-    "Distributed Systems",
-    "Real-time Analytics",
-    "Mumbai",
+    "Cloud Computing",
   ],
   authors: [{ name: "Tejas Thakare" }],
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
-    title: "Tejas Thakare — Systems Engineer",
+    title: "Tejas Thakare | Systems Engineer & Backend Architect",
     description:
-      "Engineering scalable backends, real-time pipelines, and distributed systems.",
+      "Engineering high-performance distributed systems and scalable backend architectures.",
     type: "website",
     locale: "en_US",
+    images: [{ url: "/logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tejas Thakare — Systems Engineer",
+    title: "Tejas Thakare | Systems Engineer & Backend Architect",
     description:
-      "Engineering scalable backends, real-time pipelines, and distributed systems.",
+      "Engineering high-performance distributed systems and scalable backend architectures.",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
