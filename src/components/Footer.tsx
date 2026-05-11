@@ -40,7 +40,7 @@ export default function Footer() {
           {/* Status */}
           <div>
             <h4 className="text-xs font-mono text-text-muted uppercase tracking-wider mb-4">Status</h4>
-            <div className="glass-card rounded-lg p-5">
+            <div className="bg-glass backdrop-blur-[20px] border border-border transition-all duration-300 will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] rounded-lg p-5">
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-green animate-pulse-glow" />
                 <span className="text-sm text-green font-medium">Available for opportunities</span>

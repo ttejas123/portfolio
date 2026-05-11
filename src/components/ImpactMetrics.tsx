@@ -89,7 +89,7 @@ export default function ImpactMetrics() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass-card glow-accent-hover rounded-xl p-5 text-center group"
+                className="bg-glass backdrop-blur-[20px] border border-border transition-all duration-300 will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] glow-accent-hover rounded-xl p-5 text-center group"
               >
                 <div className="flex justify-center mb-3">
                   <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">

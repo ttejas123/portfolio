@@ -39,7 +39,7 @@ export default function EngineeringJournal() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {JOURNAL_TOPICS.map((topic, i) => {
             const categoryStyle =
               CATEGORY_COLORS[topic.category] || CATEGORY_COLORS.Architecture;
@@ -52,7 +52,7 @@ export default function EngineeringJournal() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="glass-card rounded-xl p-6 sm:p-7 group hover:bg-glass-hover transition-all cursor-default flex flex-col h-full"
+                className="bg-glass backdrop-blur-[20px] border border-border will-change-transform hover:border-border-hover hover:-translate-y-[1px] rounded-xl p-5 sm:p-6 group hover:bg-glass-hover transition-all cursor-default flex flex-col h-full"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
@@ -69,7 +69,7 @@ export default function EngineeringJournal() {
                   {topic.title}
                 </h3>
 
-                <p className="text-xs text-text-muted leading-relaxed mb-4">
+                <p className="text-xs text-text-muted leading-relaxed mb-5">
                   {topic.description}
                 </p>
 

@@ -83,7 +83,7 @@ export default function SystemsExperiments() {
                   onClick={() =>
                     setSelectedProject(isSelected ? null : globalIndex)
                   }
-                  className={`glass-card rounded-xl p-5 cursor-pointer group transition-all duration-300 ${
+                  className={`bg-glass backdrop-blur-[20px] border border-border will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] rounded-xl p-5 cursor-pointer group transition-all duration-300 ${
                     isSelected ? "ring-1 ring-accent/30" : ""
                   }`}
                 >

@@ -32,7 +32,7 @@ export default function EngineeringMindset() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {ENGINEERING_CONCEPTS.map((concept, i) => {
             const isExpanded = expandedIndex === i;
             const Icon = getIcon(concept.icon);
@@ -44,7 +44,7 @@ export default function EngineeringMindset() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
                 onClick={() => setExpandedIndex(isExpanded ? null : i)}
-                className={`glass-card rounded-xl p-6 sm:p-7 cursor-pointer group transition-all duration-300 flex flex-col h-full ${
+                className={`bg-glass backdrop-blur-[20px] border border-border will-change-transform hover:-translate-y-[1px] hover:border-border-hover rounded-xl p-5 sm:p-6 cursor-pointer group transition-all duration-300 flex flex-col h-full ${
                   isExpanded
                     ? "ring-1 ring-accent/30 bg-glass-hover"
                     : "hover:bg-glass-hover"
@@ -56,24 +56,24 @@ export default function EngineeringMindset() {
                 <h3 className="text-sm font-semibold text-text-primary mb-2.5 group-hover:text-accent transition-colors">
                   {concept.title}
                 </h3>
-                <p className="text-xs text-text-muted leading-relaxed mb-4">
+                <p className="text-xs text-text-muted leading-relaxed mb-5">
                   {concept.description}
                 </p>
 
-                {/* Bottom Section (Pushed to bottom) */}
-                <div className="mt-auto pt-2">
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {concept.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 text-[10px] font-mono text-accent/70 border border-accent/15 rounded bg-accent/5"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {concept.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 text-[10px] font-mono text-accent/70 border border-accent/15 rounded bg-accent/5"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
+                {/* Bottom Section (Pushed to bottom) */}
+                <div className="mt-auto flex flex-col">
                   {/* Expanded detail */}
                   <AnimatePresence>
                     {isExpanded && (
@@ -84,7 +84,7 @@ export default function EngineeringMindset() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="pt-4 border-t border-border">
+                        <div className="pt-4 mt-2 border-t border-border">
                           <p className="text-xs text-text-secondary leading-relaxed">
                             {concept.detail}
                           </p>
@@ -94,8 +94,8 @@ export default function EngineeringMindset() {
                   </AnimatePresence>
 
                   {/* Expand indicator */}
-                  <div className="flex items-center gap-1 mt-2">
-                    <span className="text-[10px] font-mono text-text-muted">
+                  <div className="flex items-center gap-1.5 mt-5">
+                    <span className="text-[10px] font-mono text-text-muted uppercase tracking-wider">
                       {isExpanded ? "collapse" : "expand"}
                     </span>
                     <motion.svg

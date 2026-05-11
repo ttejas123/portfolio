@@ -159,7 +159,7 @@ export default function ArchitecturePlayground() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="glass-card rounded-xl overflow-hidden border border-border"
+          className="bg-glass backdrop-blur-[20px] transition-all duration-300 will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] rounded-xl overflow-hidden border border-border"
           style={{ height: 480 }}
         >
           <ReactFlow

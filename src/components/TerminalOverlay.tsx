@@ -59,7 +59,7 @@ export default function TerminalOverlay() {
   };
 
   return (
-    <div className="glass-card rounded-xl overflow-hidden w-full max-w-lg">
+    <div className="bg-glass backdrop-blur-[20px] border border-border transition-all duration-300 w-full max-w-lg rounded-xl overflow-hidden">
       {/* Terminal Header */}
       <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-bg-secondary/50">
         <div className="flex gap-1.5">

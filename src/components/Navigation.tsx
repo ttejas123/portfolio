@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { label: "Impact", href: "#impact" },
   { label: "Mindset", href: "#mindset" },
   { label: "Systems", href: "#systems" },
-  { label: "Architecture", href: "#architecture" },
   { label: "Journal", href: "#journal" },
   { label: "Experience", href: "#experience" },
 ];
@@ -17,6 +16,28 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    // Sync theme state on mount
+    if (document.documentElement.classList.contains("dark")) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,37 +112,56 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* Contact CTA */}
-          <a
-            href={`mailto:${PERSONAL.email}`}
-            className="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-all"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse-glow" />
-            Available
-          </a>
+          <div className="flex items-center gap-3 md:gap-4">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg border border-border text-text-muted hover:text-accent hover:border-accent/30 hover:bg-accent/5 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              ) : (
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+            </button>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`w-5 h-0.5 bg-text-primary transition-all ${
-                mobileOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`w-5 h-0.5 bg-text-primary transition-all ${
-                mobileOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`w-5 h-0.5 bg-text-primary transition-all ${
-                mobileOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
-          </button>
+            {/* Contact CTA */}
+            <a
+              href={`mailto:${PERSONAL.email}`}
+              className="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-all"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse-glow" />
+              Available
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden flex flex-col gap-1.5 p-2"
+              aria-label="Toggle menu"
+            >
+              <span
+                className={`w-5 h-0.5 bg-text-primary transition-all ${
+                  mobileOpen ? "rotate-45 translate-y-2" : ""
+                }`}
+              />
+              <span
+                className={`w-5 h-0.5 bg-text-primary transition-all ${
+                  mobileOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`w-5 h-0.5 bg-text-primary transition-all ${
+                  mobileOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
+              />
+            </button>
+          </div>
         </div>
       </motion.nav>
 

@@ -49,13 +49,13 @@ export default function ExperienceTimeline() {
                 >
                 <div className={`absolute top-6 w-3 h-3 rounded-full bg-accent border-2 border-bg-primary z-10 left-[1.15rem] ${
                   isLeft
-                    ? "md:left-auto md:-right-[1.65rem]"
-                    : "md:left-auto md:-left-[1.65rem]"
+                    ? "md:left-auto md:-right-[38px]"
+                    : "md:left-auto md:-left-[38px]"
                 }`}>
                   <div className="absolute inset-0 rounded-full bg-accent animate-ping opacity-20" />
                 </div>
 
-                <div className="glass-card rounded-xl p-6 glow-accent-hover">
+                <div className="bg-glass backdrop-blur-[20px] border border-border transition-all duration-300 will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] rounded-xl p-6 glow-accent-hover">
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="text-xl font-bold text-text-primary">{exp.company}</h3>

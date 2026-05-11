@@ -50,7 +50,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 40%, transparent 0%, rgba(10, 10, 15, 0.6) 50%, rgba(10, 10, 15, 0.95) 100%)",
+            "radial-gradient(ellipse 80% 60% at 50% 40%, transparent 0%, color-mix(in srgb, var(--color-bg-primary) 60%, transparent) 50%, var(--color-bg-primary) 100%)",
         }}
       />
 
@@ -136,12 +136,6 @@ export default function Hero() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </a>
-              <a
-                href="#architecture"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-text-secondary font-medium text-sm hover:border-accent/30 hover:text-accent transition-all"
-              >
-                View Architecture
               </a>
             </motion.div>
 
