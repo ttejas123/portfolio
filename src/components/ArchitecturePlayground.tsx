@@ -117,7 +117,7 @@ export default function ArchitecturePlayground() {
             <IconBuilding size={13} className="text-accent-light" />
             Live Architecture
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-3">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold mt-3 mb-3 leading-tight">
             Interactive <span className="gradient-text">system diagrams</span>
           </h2>
           <p className="text-text-muted text-sm max-w-2xl mx-auto leading-relaxed">
@@ -134,7 +134,7 @@ export default function ArchitecturePlayground() {
               onClick={() => setActiveDiagram(key)}
               className={`px-4 py-2 rounded-lg text-sm font-mono transition-all ${
                 activeDiagram === key
-                  ? "bg-accent/15 text-accent border border-accent/30"
+                  ? "bg-accent/15 text-accent border border-white/30"
                   : "text-text-muted border border-border hover:text-text-secondary hover:border-border-hover"
               }`}
             >
@@ -159,7 +159,7 @@ export default function ArchitecturePlayground() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="bg-glass backdrop-blur-[20px] transition-all duration-300 will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] rounded-xl overflow-hidden border border-border"
+          className="retro-card rounded-sm overflow-hidden"
           style={{ height: 480 }}
         >
           <ReactFlow

@@ -4,30 +4,64 @@ import { PERSONAL } from "@/lib/data";
 import { IconMail, IconExternalLink, IconMapPin } from "./Icons";
 import { event } from "@/utils/analytics";
 
+const INITIALS = PERSONAL.name
+  .split(" ")
+  .map((w) => w[0])
+  .join("")
+  .slice(0, 2)
+  .toUpperCase();
+
 export default function Footer() {
   return (
-    <footer className="relative border-t border-border">
-      <div className="absolute inset-0 grid-bg pointer-events-none opacity-50" />
-      <div className="section-container relative py-12">
+    <footer className="relative border-t-2 border-white bg-bg-secondary">
+      <div className="section-container relative py-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 pb-14 border-b border-border">
+          <h2 className="font-display font-extrabold leading-[0.95] tracking-tight text-[clamp(2.25rem,6vw,4.5rem)]">
+            <span className="block text-text-primary">LET&apos;S BUILD</span>
+            <span className="block gradient-text retro-glow-text italic">SOMETHING.</span>
+          </h2>
+          <a
+            href={`mailto:${PERSONAL.email}`}
+            onClick={() => {
+              event({
+                action: "contact_email_clicked",
+                category: "engagement",
+                label: "Footer Big CTA Clicked",
+              });
+            }}
+            className="retro-btn px-7 py-3.5 text-sm shrink-0"
+          >
+            Say Hello
+          </a>
+        </div>
+
+        <div className="section-label w-fit mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-glow" />
+          End of transmission
+        </div>
+
         <div className="grid md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4 group/footer">
-              <div className="w-10 h-10 rounded-xl bg-white/5 border border-border flex items-center justify-center overflow-hidden shadow-sm transition-all group-hover/footer:border-accent/30">
-                <img src="/logo.png" alt="Logo" className="w-full h-full object-cover p-1.5 transition-transform duration-500 group-hover/footer:scale-110 dark:invert dark:hue-rotate-180" />
+              <div
+                className="w-10 h-10 bg-accent flex items-center justify-center font-display font-extrabold text-sm text-bg-primary transition-all group-hover/footer:shadow-[3px_3px_0_0_var(--color-accent-light)]"
+                style={{ transform: "rotate(-4deg)" }}
+              >
+                {INITIALS}
               </div>
-              <span className="font-semibold text-text-primary">{PERSONAL.name}</span>
+              <span className="font-display font-bold text-lg text-text-primary">{PERSONAL.name}</span>
             </div>
             <p className="text-sm text-text-muted leading-relaxed mb-4">{PERSONAL.tagline}</p>
-            <p className="text-xs font-mono text-text-muted">Built with systems thinking.</p>
+            <p className="text-xs font-display font-semibold text-accent-light bracket">Built with systems thinking</p>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-mono text-text-muted uppercase tracking-wider mb-4">Contact</h4>
+            <h4 className="text-xs font-display font-semibold text-text-muted uppercase tracking-wide mb-4 bracket w-fit">Contact</h4>
             <div className="space-y-3">
-              <a 
-                href={`mailto:${PERSONAL.email}`} 
+              <a
+                href={`mailto:${PERSONAL.email}`}
                 onClick={() => {
                   event({
                     action: "contact_email_clicked",
@@ -39,10 +73,10 @@ export default function Footer() {
               >
                 <IconMail size={14} className="text-accent shrink-0" /> {PERSONAL.email}
               </a>
-              <a 
-                href={PERSONAL.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={PERSONAL.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => {
                   event({
                     action: "social_link_clicked",
@@ -62,8 +96,8 @@ export default function Footer() {
 
           {/* Status */}
           <div>
-            <h4 className="text-xs font-mono text-text-muted uppercase tracking-wider mb-4">Status</h4>
-            <div className="bg-glass backdrop-blur-[20px] border border-border transition-all duration-300 will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] rounded-lg p-5">
+            <h4 className="text-xs font-display font-semibold text-text-muted uppercase tracking-wide mb-4 bracket w-fit">Status</h4>
+            <div className="retro-card p-5">
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-green animate-pulse-glow" />
                 <span className="text-sm text-green font-medium">Available for opportunities</span>
@@ -76,8 +110,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-text-muted font-mono">© {new Date().getFullYear()} {PERSONAL.name}. All rights reserved.</p>
-          <p className="text-xs text-text-muted font-mono">Next.js · TypeScript · Tailwind · Framer Motion · React Flow</p>
+          <p className="text-xs text-text-muted font-display">© {new Date().getFullYear()} {PERSONAL.name}. All rights reserved.</p>
+          <p className="text-xs text-text-muted font-display">Next.js · TypeScript · Tailwind · Framer Motion · React Flow</p>
         </div>
       </div>
     </footer>

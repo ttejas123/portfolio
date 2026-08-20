@@ -1,12 +1,14 @@
 import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
+import ImpactMetrics from "@/components/ImpactMetrics";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function ImpactPage() {
   return (
     <main>
       <Navigation />
-      <Hero />
+      <div className="pt-24">
+        <ImpactMetrics />
+      </div>
       <Footer />
     </main>
   );

@@ -5,39 +5,40 @@ import { JOURNAL_TOPICS } from "@/lib/data";
 import { IconBookOpen, getIcon } from "./Icons";
 
 const CATEGORY_COLORS: Record<string, string> = {
-  "Data Structures": "text-green border-green/20 bg-green/5",
-  "Runtime Internals": "text-amber border-amber/20 bg-amber/5",
-  "Distributed Systems": "text-cyan border-cyan/20 bg-cyan/5",
-  Databases: "text-red border-red/20 bg-red/5",
-  Performance: "text-accent-light border-accent/20 bg-accent/5",
-  Architecture: "text-accent border-accent/20 bg-accent/5",
+  "Data Structures": "text-green border-2 border-green bg-bg-primary",
+  "Runtime Internals": "text-amber border-2 border-amber bg-bg-primary",
+  "Distributed Systems": "text-cyan border-2 border-cyan bg-bg-primary",
+  Databases: "text-red border-2 border-red bg-bg-primary",
+  Performance: "text-accent-light border-2 border-white bg-bg-primary",
+  Architecture: "text-accent border-2 border-white bg-bg-primary",
 };
 
 export default function EngineeringJournal() {
   return (
-    <section id="journal" className="section-spacing relative">
-      <div className="absolute inset-0 dot-bg pointer-events-none" />
-
-      <div className="section-container relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="section-label mx-auto w-fit">
+    <section id="journal" className="relative">
+      {/* Black headline band */}
+      <div className="relative bg-bg-primary border-b-2 border-white">
+        <div className="absolute inset-0 dot-bg pointer-events-none opacity-60" />
+        <div className="section-container relative py-16 md:py-20">
+          <div className="section-label w-fit mb-6">
             <IconBookOpen size={13} className="text-accent-light" />
             Engineering Journal
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-3">
-            Deep dives & <span className="gradient-text">explorations</span>
+          <h2 className="font-display font-extrabold leading-[0.95] tracking-tight text-[clamp(2rem,5.5vw,4rem)] max-w-3xl">
+            <span className="block text-text-primary">DEEP DIVES &amp;</span>
+            <span className="block gradient-text">EXPLORATIONS.</span>
           </h2>
-          <p className="text-text-muted text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-white pl-4">
             Topics I study, experiment with, and apply in production.
             Each entry represents hours of research and practical application.
           </p>
-        </motion.div>
+        </div>
+      </div>
+
+      {/* Purple content band */}
+      <div className="relative bg-bg-primary">
+        <div className="absolute inset-0 dot-bg pointer-events-none" />
+        <div className="section-container relative py-16">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {JOURNAL_TOPICS.map((topic, i) => {
@@ -52,14 +53,14 @@ export default function EngineeringJournal() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-glass backdrop-blur-[20px] border border-border will-change-transform hover:border-border-hover hover:-translate-y-[1px] rounded-xl p-5 sm:p-6 group hover:bg-glass-hover transition-all cursor-default flex flex-col h-full"
+                className="retro-card rounded-sm p-5 sm:p-6 group cursor-default flex flex-col h-full"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-lg bg-bg-primary border-2 border-white flex items-center justify-center">
                     <Icon size={16} className="text-accent-light" />
                   </div>
                   <span
-                    className={`px-2 py-0.5 rounded-full text-[10px] font-mono border ${categoryStyle}`}
+                    className={`px-2 py-0.5 rounded-full text-[10px] font-display font-medium border ${categoryStyle}`}
                   >
                     {topic.category}
                   </span>
@@ -75,7 +76,7 @@ export default function EngineeringJournal() {
 
                 {/* Decorative code block */}
                 <div className="mt-auto pt-4">
-                  <div className="font-mono text-[10px] text-accent/40 bg-accent/5 rounded p-2.5 border border-accent/10">
+                  <div className="font-mono text-[10px] text-accent-light bg-bg-primary rounded p-2.5 border-2 border-white">
                     <span className="text-text-muted/40">// research/</span>
                     {topic.title.toLowerCase().replace(/\s+/g, "_")}.md
                   </div>
@@ -83,6 +84,7 @@ export default function EngineeringJournal() {
               </motion.div>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

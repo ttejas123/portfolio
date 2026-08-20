@@ -1,22 +1,29 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { PERSONAL } from "@/lib/data";
 import { event } from "@/utils/analytics";
 
+const INITIALS = PERSONAL.name
+  .split(" ")
+  .map((w) => w[0])
+  .join("")
+  .slice(0, 2)
+  .toUpperCase();
+
 const NAV_LINKS = [
-  { label: "Impact", href: "#impact" },
-  { label: "Mindset", href: "#mindset" },
-  { label: "Systems", href: "#systems" },
-  { label: "Journal", href: "#journal" },
-  { label: "Experience", href: "#experience" },
+  { label: "Impact", href: "/impact" },
+  { label: "Mindset", href: "/mindset" },
+  { label: "Systems", href: "/systems" },
+  { label: "Journal", href: "/journal" },
+  { label: "Experience", href: "/experience" },
 ];
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
@@ -40,71 +47,47 @@ export default function Navigation() {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-
-      // Determine active section
-      const sections = NAV_LINKS.map((l) => l.href.replace("#", ""));
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 200) {
-            setActiveSection(sections[i]);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <>
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-bg-primary/80 backdrop-blur-xl border-b border-border"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 border-b-2 border-white bg-bg-primary"
       >
-        <div className="section-container flex items-center justify-between h-16">
+        <div className="section-container flex items-center justify-between h-24">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-white/5 border border-border flex items-center justify-center group-hover:border-accent/30 transition-all overflow-hidden shadow-sm group-hover:shadow-accent/10">
-              <img src="/logo.png" alt="Logo" className="w-full h-full object-cover p-1.5 group-hover:scale-110 transition-transform duration-500 dark:invert dark:hue-rotate-180" />
+          <a href="/" className="flex items-center gap-4 group">
+            <div
+              className="w-14 h-14 bg-accent flex items-center justify-center font-display font-extrabold text-xl text-bg-primary transition-all group-hover:shadow-[4px_4px_0_0_var(--color-accent-light)]"
+              style={{ transform: "rotate(-4deg)" }}
+            >
+              {INITIALS}
             </div>
-            <span className="font-semibold text-text-primary hidden sm:block">
+            <span className="font-display font-bold text-2xl text-text-primary hidden sm:block tracking-tight">
               {PERSONAL.name}
             </span>
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-2 font-display text-lg font-semibold">
             {NAV_LINKS.map((link) => {
-              const sectionId = link.href.replace("#", "");
-              const isActive = activeSection === sectionId;
+              const isActive = pathname === link.href;
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors rounded-lg ${
+                  className={`relative px-3 py-2 tracking-tight transition-colors ${
                     isActive
-                      ? "text-accent"
-                      : "text-text-muted hover:text-text-primary"
+                      ? "text-accent-light"
+                      : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
                   {link.label}
                   {isActive && (
                     <motion.div
                       layoutId="nav-indicator"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-accent rounded-full"
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-accent"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -117,7 +100,7 @@ export default function Navigation() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg border border-border text-text-muted hover:text-accent hover:border-accent/30 hover:bg-accent/5 transition-colors"
+              className="p-2 border-[1.5px] border-border text-text-muted hover:text-accent hover:border-white transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "light" ? (
@@ -141,7 +124,7 @@ export default function Navigation() {
                   label: "Navigation Email Clicked",
                 });
               }}
-              className="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-all"
+              className="retro-btn-ghost hidden md:flex px-4 py-2 text-xs uppercase"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse-glow" />
               Available
@@ -191,7 +174,7 @@ export default function Navigation() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="text-xl font-medium text-text-secondary hover:text-accent transition-colors"
+                  className="font-display text-2xl font-semibold tracking-tight text-text-secondary hover:text-accent-light transition-colors"
                 >
                   {link.label}
                 </motion.a>

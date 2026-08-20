@@ -56,28 +56,29 @@ export default function ImpactMetrics() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="impact" className="section-spacing relative">
-      <div className="absolute inset-0 dot-bg pointer-events-none" />
-
-      <div className="section-container relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="section-label mx-auto w-fit">
+    <section id="impact" className="relative">
+      {/* Black headline band */}
+      <div className="relative bg-bg-primary border-b-2 border-white">
+        <div className="absolute inset-0 grid-bg pointer-events-none opacity-60" />
+        <div className="section-container relative py-16 md:py-20">
+          <div className="section-label w-fit mb-6">
             <IconBarChart size={13} className="text-accent-light" />
             Production Impact
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-3">
-            Numbers from <span className="gradient-text">production systems</span>
+          <h2 className="font-display font-extrabold leading-[0.95] tracking-tight text-[clamp(2rem,5.5vw,4rem)] max-w-3xl">
+            <span className="block text-text-primary">NUMBERS FROM</span>
+            <span className="block gradient-text">PRODUCTION SYSTEMS.</span>
           </h2>
-          <p className="text-text-muted text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-white pl-4">
             Real metrics from systems I&apos;ve designed, built, and maintained at scale.
           </p>
-        </motion.div>
+        </div>
+      </div>
+
+      {/* Purple content band */}
+      <div className="relative bg-bg-primary">
+        <div className="absolute inset-0 dot-bg pointer-events-none" />
+        <div className="section-container relative py-16">
 
         <div ref={ref} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {IMPACT_METRICS.map((metric, i) => {
@@ -89,10 +90,10 @@ export default function ImpactMetrics() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-glass backdrop-blur-[20px] border border-border transition-all duration-300 will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] glow-accent-hover rounded-xl p-5 text-center group"
+                className="retro-card rounded-sm p-5 text-center group"
               >
                 <div className="flex justify-center mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-lg bg-bg-primary border-2 border-white flex items-center justify-center">
                     <Icon size={16} className="text-accent-light" />
                   </div>
                 </div>
@@ -112,6 +113,7 @@ export default function ImpactMetrics() {
               </motion.div>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

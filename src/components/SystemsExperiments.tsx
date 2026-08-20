@@ -24,29 +24,30 @@ export default function SystemsExperiments() {
       : PROJECTS.filter((p) => p.status === filter);
 
   return (
-    <section id="systems" className="section-spacing relative">
-      <div className="absolute inset-0 dot-bg pointer-events-none" />
-
-      <div className="section-container relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="section-label mx-auto w-fit">
+    <section id="systems" className="relative">
+      {/* Black headline band */}
+      <div className="relative bg-bg-primary border-b-2 border-white">
+        <div className="absolute inset-0 dot-bg pointer-events-none opacity-60" />
+        <div className="section-container relative py-16 md:py-20">
+          <div className="section-label w-fit mb-6">
             <IconGear size={13} className="text-accent-light" />
             Systems & Experiments
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-3">
-            Engineering <span className="gradient-text">explorations</span>
+          <h2 className="font-display font-extrabold leading-[0.95] tracking-tight text-[clamp(2rem,5.5vw,4rem)] max-w-3xl">
+            <span className="block text-text-primary">ENGINEERING</span>
+            <span className="block gradient-text">EXPLORATIONS.</span>
           </h2>
-          <p className="text-text-muted text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-white pl-4">
             Production systems and experimental architectures I&apos;ve built,
             with the engineering tradeoffs behind each.
           </p>
-        </motion.div>
+        </div>
+      </div>
+
+      {/* Purple content band */}
+      <div className="relative bg-bg-primary">
+        <div className="absolute inset-0 dot-bg pointer-events-none" />
+        <div className="section-container relative py-16">
 
         {/* Filters */}
         <div className="flex justify-center gap-2 mb-8">
@@ -54,9 +55,9 @@ export default function SystemsExperiments() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-mono capitalize transition-all ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-display font-medium capitalize transition-all ${
                 filter === f
-                  ? "bg-accent/15 text-accent border border-accent/30"
+                  ? "bg-accent text-bg-primary border-2 border-white"
                   : "text-text-muted border border-border hover:border-border-hover hover:text-text-secondary"
               }`}
             >
@@ -92,8 +93,8 @@ export default function SystemsExperiments() {
                     }
                     setSelectedProject(isSelected ? null : globalIndex);
                   }}
-                  className={`bg-glass backdrop-blur-[20px] border border-border will-change-transform hover:bg-glass-hover hover:border-border-hover hover:-translate-y-[1px] rounded-xl p-5 cursor-pointer group transition-all duration-300 ${
-                    isSelected ? "ring-1 ring-accent/30" : ""
+                  className={`retro-card rounded-sm p-5 cursor-pointer group transition-all duration-300 ${
+                    isSelected ? "ring-2 ring-accent" : ""
                   }`}
                 >
                   {/* Header */}
@@ -102,7 +103,7 @@ export default function SystemsExperiments() {
                       {project.title}
                     </h3>
                     <span
-                      className={`flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono ${status.textColor} border border-current/20`}
+                      className={`flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-display font-medium ${status.textColor} border-2 border-current`}
                     >
                       <span
                         className={`w-1.5 h-1.5 rounded-full ${status.color}`}
@@ -116,7 +117,7 @@ export default function SystemsExperiments() {
                   </p>
 
                   {/* Architecture */}
-                  <div className="font-mono text-[11px] text-accent/60 bg-accent/5 rounded-lg p-3 mb-4 border border-accent/10">
+                  <div className="font-mono text-[11px] text-accent-light bg-bg-primary rounded-lg p-3 mb-4 border-2 border-white">
                     <span className="text-text-muted block mb-1 text-[10px] uppercase tracking-wider">
                       Architecture
                     </span>
@@ -128,7 +129,7 @@ export default function SystemsExperiments() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 text-[10px] font-mono text-text-muted border border-border rounded bg-bg-secondary/50"
+                        className="px-2 py-0.5 text-[10px] font-display font-medium text-text-muted border-2 border-border rounded bg-bg-primary"
                       >
                         {tag}
                       </span>
@@ -148,7 +149,7 @@ export default function SystemsExperiments() {
                         <div className="pt-4 border-t border-border space-y-4">
                           {/* Challenges */}
                           <div>
-                            <h4 className="text-xs font-mono text-text-muted uppercase tracking-wider mb-2">
+                            <h4 className="text-xs font-display font-semibold text-text-muted uppercase tracking-wide mb-2">
                               Scaling Challenges
                             </h4>
                             <ul className="space-y-1.5">
@@ -166,7 +167,7 @@ export default function SystemsExperiments() {
 
                           {/* Tradeoffs */}
                           <div>
-                            <h4 className="text-xs font-mono text-text-muted uppercase tracking-wider mb-2">
+                            <h4 className="text-xs font-display font-semibold text-text-muted uppercase tracking-wide mb-2">
                               Engineering Tradeoffs
                             </h4>
                             <p className="text-xs text-text-secondary leading-relaxed">
@@ -180,7 +181,7 @@ export default function SystemsExperiments() {
 
                   {/* Expand indicator */}
                   <div className="flex items-center justify-end gap-1 mt-2">
-                    <span className="text-[10px] font-mono text-text-muted">
+                    <span className="text-[10px] font-display font-medium text-text-muted">
                       {isSelected ? "less" : "details"}
                     </span>
                     <motion.svg
@@ -203,6 +204,7 @@ export default function SystemsExperiments() {
               );
             })}
           </AnimatePresence>
+        </div>
         </div>
       </div>
     </section>

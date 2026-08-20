@@ -71,7 +71,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Unbounded:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <script src="https://cdn.tailwindcss.com"></script>
@@ -103,8 +103,9 @@ export default function RootLayout({
                       'cyan': 'var(--color-cyan)',
                     },
                     fontFamily: {
-                      sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                      sans: ['Unbounded', 'Space Grotesk', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                       mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+                      display: ['Unbounded', 'Space Grotesk', 'ui-sans-serif', 'sans-serif'],
                     }
                   }
                 }
