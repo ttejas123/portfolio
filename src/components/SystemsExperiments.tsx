@@ -26,7 +26,7 @@ export default function SystemsExperiments() {
   return (
     <section id="systems" className="relative">
       {/* Black headline band */}
-      <div className="relative bg-bg-primary border-b-2 border-white">
+      <div className="relative bg-bg-primary border-b-2 border-border">
         <div className="absolute inset-0 dot-bg pointer-events-none opacity-60" />
         <div className="section-container relative py-16 md:py-20">
           <div className="section-label w-fit mb-6">
@@ -37,7 +37,7 @@ export default function SystemsExperiments() {
             <span className="block text-text-primary">ENGINEERING</span>
             <span className="block gradient-text">EXPLORATIONS.</span>
           </h2>
-          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-white pl-4">
+          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-border pl-4">
             Production systems and experimental architectures I&apos;ve built,
             with the engineering tradeoffs behind each.
           </p>
@@ -57,7 +57,7 @@ export default function SystemsExperiments() {
               onClick={() => setFilter(f)}
               className={`px-3.5 py-1.5 rounded-full text-xs font-display font-medium capitalize transition-all ${
                 filter === f
-                  ? "bg-accent text-bg-primary border-2 border-white"
+                  ? "bg-accent text-bg-primary border-2 border-border"
                   : "text-text-muted border border-border hover:border-border-hover hover:text-text-secondary"
               }`}
             >
@@ -117,7 +117,7 @@ export default function SystemsExperiments() {
                   </p>
 
                   {/* Architecture */}
-                  <div className="font-mono text-[11px] text-accent-light bg-bg-primary rounded-lg p-3 mb-4 border-2 border-white">
+                  <div className="font-mono text-[11px] text-accent-light bg-bg-primary rounded-lg p-3 mb-4 border-2 border-border">
                     <span className="text-text-muted block mb-1 text-[10px] uppercase tracking-wider">
                       Architecture
                     </span>

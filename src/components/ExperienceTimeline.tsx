@@ -8,7 +8,7 @@ export default function ExperienceTimeline() {
   return (
     <section id="experience" className="relative">
       {/* Black headline band */}
-      <div className="relative bg-bg-primary border-b-2 border-white">
+      <div className="relative bg-bg-primary border-b-2 border-border">
         <div className="absolute inset-0 grid-bg pointer-events-none opacity-60" />
         <div className="section-container relative py-16 md:py-20">
           <div className="section-label w-fit mb-6">
@@ -18,7 +18,7 @@ export default function ExperienceTimeline() {
             <span className="block text-text-primary">WHERE I&apos;VE</span>
             <span className="block gradient-text">ENGINEERED IMPACT.</span>
           </h2>
-          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-white pl-4">
+          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-border pl-4">
             Each role was a mission with technical challenges and measurable outcomes.
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function ExperienceTimeline() {
 
                   <div className="flex flex-wrap gap-1.5">
                     {exp.stack.map((tech) => (
-                      <span key={tech} className="px-2 py-0.5 text-[10px] font-display font-medium text-accent-light border-2 border-white rounded bg-bg-primary">
+                      <span key={tech} className="px-2 py-0.5 text-[10px] font-display font-medium text-accent-light border-2 border-border rounded bg-bg-primary">
                         {tech}
                       </span>
                     ))}

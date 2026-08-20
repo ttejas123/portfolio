@@ -134,7 +134,7 @@ export default function ArchitecturePlayground() {
               onClick={() => setActiveDiagram(key)}
               className={`px-4 py-2 rounded-lg text-sm font-mono transition-all ${
                 activeDiagram === key
-                  ? "bg-accent/15 text-accent border border-white/30"
+                  ? "bg-accent/15 text-accent border border-border/30"
                   : "text-text-muted border border-border hover:text-text-secondary hover:border-border-hover"
               }`}
             >

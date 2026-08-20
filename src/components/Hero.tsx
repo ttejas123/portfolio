@@ -7,12 +7,12 @@ const STACK = ["Node.js", "PostgreSQL", "Redis", "RabbitMQ", "React", "AWS"];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden border-b-2 border-white">
+    <section className="relative min-h-screen flex items-center overflow-hidden border-b-2 border-border">
       <div className="absolute inset-0 grid-bg" />
 
       {/* Oversized graphic block — static poster accent */}
       <div
-        className="absolute -right-24 top-1/2 -translate-y-1/2 w-[560px] h-[560px] bg-bg-primary border-2 border-white pointer-events-none hidden lg:block"
+        className="absolute -right-24 top-1/2 -translate-y-1/2 w-[560px] h-[560px] bg-bg-primary border-2 border-border pointer-events-none hidden lg:block"
         style={{ transform: "translateY(-50%) rotate(8deg)" }}
       />
       <div
@@ -43,7 +43,7 @@ export default function Hero() {
             <span className="block text-text-primary">SYSTEMS.</span>
           </h1>
 
-          <p className="text-text-secondary text-lg max-w-xl mb-10 leading-relaxed border-l-2 border-white pl-5">
+          <p className="text-text-secondary text-lg max-w-xl mb-10 leading-relaxed border-l-2 border-border pl-5">
             {PERSONAL.tagline} Currently engineering analytics infrastructure
             at <span className="text-text-primary font-semibold">Brandlock</span>,
             processing{" "}

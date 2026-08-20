@@ -1,23 +1,27 @@
 :root {
-  /* Plum / Magenta — dominant black, plum sections, white text */
-  --color-bg-primary: #030102;
-  --color-bg-secondary: #55103f;
-  --color-bg-tertiary: #3a0c2c;
+  /* Plum / Magenta — Light Mode: white ground, plum accent, ink text */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #7a1161;
+  --color-bg-tertiary: #4a0c3b;
   --color-accent: #a3167e;
-  --color-accent-light: #e879f9;
-  --color-accent-glow: rgba(163, 22, 126, 0.24);
-  --color-accent-glow-strong: rgba(163, 22, 126, 0.55);
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #f0d4ea;
-  --color-text-muted: #d199c9;
-  --color-border: #ffffff;
+  --color-accent-light: #c0189a;
+  --color-accent-glow: rgba(163, 22, 126, 0.14);
+  --color-accent-glow-strong: rgba(163, 22, 126, 0.3);
+  --color-text-primary: #1a0715;
+  --color-text-secondary: #4a1e3d;
+  --color-text-muted: #7d4266;
+  --color-border: #1a0715;
   --color-border-hover: #a3167e;
-  --color-glass: #33122a;
-  --color-glass-hover: #401833;
-  --color-green: #e879f9;
-  --color-amber: #d199e0;
-  --color-red: #f0d4ea;
-  --color-cyan: #e879f9;
+  --color-glass: #fbeef7;
+  --color-glass-hover: #f5ddef;
+  --color-green: #a3167e;
+  --color-amber: #c0189a;
+  --color-red: #7d4266;
+  --color-cyan: #a3167e;
+
+  /* Fixed light text for the plum footer panel — panel color doesn't swap with theme */
+  --color-on-panel: #ffffff;
+  --color-on-panel-muted: #f0c7e6;
 
   --font-sans: "Unbounded", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -44,6 +48,9 @@
   --color-amber: #d8a8e8;
   --color-red: #f0d4ea;
   --color-cyan: #e879f9;
+
+  --color-on-panel: #ffffff;
+  --color-on-panel-muted: #f0c7e6;
 }
 
 /* ===== BASE RESET ===== */
@@ -97,7 +104,7 @@ body {
 
 /* ===== SELECTION ===== */
 ::selection {
-  background: rgba(168, 85, 247, 0.4);
+  background: rgba(163, 22, 126, 0.4);
   color: #f3e8ff;
 }
 
@@ -109,8 +116,8 @@ body {
   pointer-events: none;
   background: repeating-linear-gradient(
     0deg,
-    rgba(168, 85, 247, 0.035),
-    rgba(168, 85, 247, 0.035) 1px,
+    rgba(163, 22, 126, 0.035),
+    rgba(163, 22, 126, 0.035) 1px,
     transparent 1px,
     transparent 3px
   );
@@ -136,7 +143,7 @@ body {
 .retro-card {
   position: relative;
   background: var(--color-bg-primary);
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-border);
   border-radius: 2px;
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -155,7 +162,7 @@ body {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: 0;
-  border: 1.5px solid #ffffff;
+  border: 1.5px solid var(--color-border);
   border-radius: 2px;
   background: var(--color-accent);
   color: var(--color-bg-primary);
@@ -209,7 +216,7 @@ body {
 
 /* ===== UTILITY CLASSES ===== */
 .glow-accent {
-  box-shadow: 0 0 30px var(--color-accent-glow), 0 0 60px rgba(99, 102, 241, 0.05);
+  box-shadow: 0 0 30px var(--color-accent-glow), 0 0 60px rgba(163, 22, 126, 0.05);
 }
 
 .glow-accent-hover:hover {
@@ -245,13 +252,13 @@ body {
 /* ===== GRID BACKGROUND ===== */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(163, 22, 126, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(163, 22, 126, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 .dot-bg {
-  background-image: radial-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(163, 22, 126, 0.1) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
@@ -380,7 +387,7 @@ body {
   color: var(--color-accent-light);
   margin-bottom: 0.875rem;
   padding: 0.3rem 0.8rem;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-border);
   border-radius: 2px;
   background: var(--color-bg-primary);
 }

@@ -58,7 +58,7 @@ export default function ImpactMetrics() {
   return (
     <section id="impact" className="relative">
       {/* Black headline band */}
-      <div className="relative bg-bg-primary border-b-2 border-white">
+      <div className="relative bg-bg-primary border-b-2 border-border">
         <div className="absolute inset-0 grid-bg pointer-events-none opacity-60" />
         <div className="section-container relative py-16 md:py-20">
           <div className="section-label w-fit mb-6">
@@ -69,7 +69,7 @@ export default function ImpactMetrics() {
             <span className="block text-text-primary">NUMBERS FROM</span>
             <span className="block gradient-text">PRODUCTION SYSTEMS.</span>
           </h2>
-          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-white pl-4">
+          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-border pl-4">
             Real metrics from systems I&apos;ve designed, built, and maintained at scale.
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function ImpactMetrics() {
                 className="retro-card rounded-sm p-5 text-center group"
               >
                 <div className="flex justify-center mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-bg-primary border-2 border-white flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-lg bg-bg-primary border-2 border-border flex items-center justify-center">
                     <Icon size={16} className="text-accent-light" />
                   </div>
                 </div>

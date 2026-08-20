@@ -11,7 +11,7 @@ export default function EngineeringMindset() {
   return (
     <section id="mindset" className="relative">
       {/* Black headline band */}
-      <div className="relative bg-bg-primary border-b-2 border-white">
+      <div className="relative bg-bg-primary border-b-2 border-border">
         <div className="absolute inset-0 grid-bg pointer-events-none opacity-60" />
         <div className="section-container relative py-16 md:py-20">
           <div className="section-label w-fit mb-6">
@@ -22,7 +22,7 @@ export default function EngineeringMindset() {
             <span className="block text-text-primary">HOW I THINK</span>
             <span className="block gradient-text">ABOUT SYSTEMS.</span>
           </h2>
-          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-white pl-4">
+          <p className="text-text-muted text-sm max-w-xl mt-5 leading-relaxed border-l-2 border-border pl-4">
             Principles and patterns that guide my architectural decisions.
           </p>
         </div>
@@ -51,7 +51,7 @@ export default function EngineeringMindset() {
                     : "hover:bg-glass-hover"
                 }`}
               >
-                <div className="w-9 h-9 rounded-lg bg-bg-primary border-2 border-white flex items-center justify-center mb-4">
+                <div className="w-9 h-9 rounded-lg bg-bg-primary border-2 border-border flex items-center justify-center mb-4">
                   <Icon size={16} className="text-accent-light" />
                 </div>
                 <h3 className="text-sm font-semibold text-text-primary mb-2.5 group-hover:text-accent transition-colors">
@@ -66,7 +66,7 @@ export default function EngineeringMindset() {
                   {concept.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 text-[10px] font-display font-medium text-accent-light border-2 border-white rounded bg-bg-primary"
+                      className="px-2 py-0.5 text-[10px] font-display font-medium text-accent-light border-2 border-border rounded bg-bg-primary"
                     >
                       {tag}
                     </span>

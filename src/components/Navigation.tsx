@@ -53,7 +53,7 @@ export default function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 border-b-2 border-white bg-bg-primary"
+        className="fixed top-0 left-0 right-0 z-50 border-b-2 border-border bg-bg-primary"
       >
         <div className="section-container flex items-center justify-between h-24">
           {/* Logo */}
@@ -100,7 +100,7 @@ export default function Navigation() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 border-[1.5px] border-border text-text-muted hover:text-accent hover:border-white transition-colors"
+              className="p-2 border-[1.5px] border-border text-text-muted hover:text-accent hover:border-border transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "light" ? (

@@ -101,6 +101,8 @@ export default function RootLayout({
                       'amber': 'var(--color-amber)',
                       'red': 'var(--color-red)',
                       'cyan': 'var(--color-cyan)',
+                      'on-panel': 'var(--color-on-panel)',
+                      'on-panel-muted': 'var(--color-on-panel-muted)',
                     },
                     fontFamily: {
                       sans: ['Unbounded', 'Space Grotesk', 'ui-sans-serif', 'system-ui', 'sans-serif'],
